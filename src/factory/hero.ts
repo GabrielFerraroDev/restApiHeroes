@@ -5,7 +5,7 @@ export const createHero = (
   strength: String,
   speed: String,
   power: String,
-  img: Object
+  img: Object = { data: Buffer, contentType: String }
 ) => {
   return {
     name,

@@ -1,1 +1,2 @@
 This is a project to see heroes, insert and delete them using Typescript, Express, Winston and Jest.
+I will be using the superHero Api to get data from heroes.
