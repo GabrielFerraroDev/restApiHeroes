@@ -5,5 +5,5 @@ const initMongo = () => {
 };
 
 export default {
-  init: initMongo(),
+  init: initMongo,
 };

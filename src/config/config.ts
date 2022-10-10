@@ -1,7 +1,7 @@
 import database from '../database';
 import * as dotenv from 'dotenv';
 
-database.init;
+database.init();
 dotenv.config();
 
 export const config = {
