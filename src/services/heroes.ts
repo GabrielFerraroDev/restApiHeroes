@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import instanceAxios from './axios';
 
 export const list = async (req: Request, res: Response): Promise<Response> => {
   return res.status(200).send({ message: 'List of heroes' });
@@ -11,6 +12,10 @@ export const insert = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
+  const { data: resAxiosHero } = await instanceAxios.get(``);
+
+  console.log(resAxiosHero);
+
   return res.status(200).send({ message: 'hero inserted' });
 };
 export const update = async (
