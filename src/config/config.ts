@@ -1,8 +1,8 @@
 import database from '../database';
 import * as dotenv from 'dotenv';
 
-//database.init();
 dotenv.config();
+database.init();
 
 export const config = {
   env: (process.env.NODE_ENV as String) || 'development',

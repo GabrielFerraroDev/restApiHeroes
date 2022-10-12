@@ -4,6 +4,4 @@ import { Schema } from 'mongoose';
 
 const HeroSchema = Hero;
 
-export default {
-  hero: mongoose.model('Heroes', new Schema(HeroSchema)),
-};
+export const heroModel = mongoose.model('Heroes', new Schema(HeroSchema));

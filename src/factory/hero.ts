@@ -1,19 +1,18 @@
-export const createHero = (
-  name: String,
-  race: String,
-  intelligence: String,
-  strength: String,
-  speed: String,
-  power: String,
-  img: Object = { data: Buffer, contentType: String }
-) => {
-  return {
-    name,
-    race,
-    intelligence,
-    strength,
-    speed,
-    power,
-    img,
+const createHero = (heroObject: {
+  id: Number;
+  name: String;
+  thumbnail: {
+    path: String;
+    extension: String;
   };
+}) => {
+  return {
+    idHero: heroObject.id,
+    name: heroObject.name,
+    image: `${heroObject.thumbnail.path}.${heroObject.thumbnail.extension}`,
+  };
+};
+
+export default {
+  createHero,
 };
