@@ -1,2 +1,11 @@
-This is a project to see heroes, insert and delete them using Typescript, Express, Winston and Jest.
-I will be using the superHero Api to get data from heroes.
+This is a project to see heroes, insert random ones and delete them.
+I will be using the Marvel Api to get data from marvel heroes.
+Technologies used:
+-Typescript
+-Express
+-Winston
+-mongoDB(mongoose)
+-Axios
+-http-status-codes
+-Docker
+-dotenv
