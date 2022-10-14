@@ -5,7 +5,15 @@ import { heroModel } from '../models/index';
 import { StatusCodes } from 'http-status-codes';
 
 export const list = async (req: Request, res: Response): Promise<Response> => {
-  return res.status(200).send({ message: 'List of heroes' });
+  try {
+    const heroes = await heroModel.find().exec();
+
+    return res.status(StatusCodes.OK).json(heroes);
+  } catch (err) {
+    console.log(err);
+
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+  }
 };
 export const get = async (req: Request, res: Response): Promise<Response> => {
   try {
@@ -47,9 +55,34 @@ export const update = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  return res.status(200).send({ message: 'hero updated' });
+  try {
+    const id = req.params.id;
+    const newHero = req.body;
+
+    const hero = await heroModel.find({ idHero: id }).exec();
+
+    if (!hero) return res.status(StatusCodes.NOT_FOUND);
+
+    await heroModel.updateOne({ idHero: id }, newHero);
+
+    return res.status(StatusCodes.OK).send({ message: 'hero updated!' });
+  } catch (err) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+  }
 };
 
 export const del = async (req: Request, res: Response): Promise<Response> => {
-  return res.status(200).send({ message: 'hero deleted' });
+  try {
+    const id = req.params.id;
+
+    const hero = await heroModel.find({ idHero: id }).exec();
+
+    if (!hero) return res.status(StatusCodes.NOT_FOUND);
+
+    await heroModel.deleteOne({ idHero: id });
+
+    return res.status(StatusCodes.OK).send({ message: 'hero deleted' });
+  } catch (err) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+  }
 };

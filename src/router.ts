@@ -6,6 +6,6 @@ router.get('/', hero.list);
 router.get('/hero/:id', hero.get);
 router.post('/hero', hero.insert);
 router.put('/hero/:id', hero.update);
-router.delete('hero/:id', hero.del);
+router.delete('/hero/:id', hero.del);
 
 export default router;
