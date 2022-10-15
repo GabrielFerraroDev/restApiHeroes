@@ -10,8 +10,6 @@ export const list = async (req: Request, res: Response): Promise<Response> => {
 
     return res.status(StatusCodes.OK).json(heroes);
   } catch (err) {
-    console.log(err);
-
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR);
   }
 };
@@ -25,7 +23,6 @@ export const get = async (req: Request, res: Response): Promise<Response> => {
 
     return res.status(StatusCodes.OK).json(hero);
   } catch (err) {
-    console.log(err);
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR);
   }
 };
