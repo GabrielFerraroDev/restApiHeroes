@@ -7,7 +7,7 @@ import { StatusCodes } from 'http-status-codes';
 export const list = async (req: Request, res: Response): Promise<Response> => {
   try {
     const heroes = await heroModel.find().exec();
-
+ 
     return res.status(StatusCodes.OK).json(heroes);
   } catch (err) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR);
@@ -53,6 +53,8 @@ export const update = async (
   res: Response
 ): Promise<Response> => {
   try {
+    
+
     const id = req.params.id;
     const newHero = req.body;
 
@@ -62,7 +64,9 @@ export const update = async (
 
     await heroModel.updateOne({ idHero: id }, newHero);
 
-    return res.status(StatusCodes.OK).send({ message: 'hero updated!' });
+    return res
+      .status(StatusCodes.OK)
+      .json({ message: 'hero updated', idHero: id });
   } catch (err) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR);
   }
@@ -78,7 +82,9 @@ export const del = async (req: Request, res: Response): Promise<Response> => {
 
     await heroModel.deleteOne({ idHero: id });
 
-    return res.status(StatusCodes.OK).send({ message: 'hero deleted' });
+    return res
+      .status(StatusCodes.OK)
+      .json({ message: 'hero deleted', idHero: id });
   } catch (err) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR);
   }
